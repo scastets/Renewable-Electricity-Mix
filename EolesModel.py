@@ -303,21 +303,21 @@ class EolesModel:
 
     def write_results(self, model_name):
         print("Writing and exporting results ...")
-        if not os.path.exists(model_name):
-            os.makedirs(model_name)
+        if not os.path.exists("./outputs/" + model_name):
+            os.makedirs("./outputs/" + model_name)
 
         # enregistrement des données d'entrées du modèle
-        Q_file = model_name + "/" + model_name + "_Q.csv"
+        Q_file = "./outputs/" + model_name + "/" + model_name + "_Q.csv"
         self.model.Q.to_csv(Q_file)
 
-        S_file = model_name + "/" + model_name + "_S.csv"
+        S_file = "./outputs/" + model_name + "/" + model_name + "_S.csv"
         self.model.S.to_csv(S_file)
 
-        Volume_file = model_name + "/" + model_name + "_Volume.csv"
+        Volume_file = "./outputs/" + model_name + "/" + model_name + "_Volume.csv"
         self.model.volume.to_csv(Volume_file)
 
         # enregistrement des résultats du modèle
-        hourly_file = model_name + "/" + model_name + "_hourly_generation.csv"
+        hourly_file = "./outputs/" + model_name + "/" + model_name + "_hourly_generation.csv"
 
         with open(hourly_file, "w", newline="") as hourly:
             hourly_writer = csv.writer(hourly)
